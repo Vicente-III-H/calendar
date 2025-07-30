@@ -1,0 +1,23 @@
+.calendar {
+    width: 100vw;
+    aspect-ratio: 7 / 6;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid white;
+}
+
+.day-number {
+    text-align: end;
+}
+
+.space {
+    flex: 1;
+}
