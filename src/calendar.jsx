@@ -11,10 +11,7 @@ function Day(props) {
 
 function Calendar(props) {
     const today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth();
-
-    const calendarDate = new Date(year, month + props.monthOffset, 1);
+    const calendarDate = new Date(today.getFullYear(), today.getMonth() + props.monthOffset, 1);
 
     const calendarDays = (() => {
         const startingDay = calendarDate.getDay();
