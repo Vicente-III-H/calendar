@@ -1,5 +1,3 @@
-.events {
-    flex: 1;
-
+#events-container {
     border: 1px solid white;
 }

@@ -1,22 +1,12 @@
 .calendar-container {
     flex: 3;
-    display: flex;
-    flex-direction: column;
-}
-
-#calendar-header {
-    display: flex;
-
 }
 
 #calendar-header div {
-    flex: 1;
-
     font-size: 2rem;
 }
 
 .calendar, #weekdays {
-    display: grid;
     grid-template-columns: repeat(7, 1fr);
 }
 
@@ -27,24 +17,15 @@
 }
 
 .calendar {
-    flex: 1;
-
     grid-template-rows: repeat(6, 1fr);
 }
 
 .day {
-    display: flex;
-    flex-direction: column;
-
     border: 1px solid white;
 }
 
 .day-number {
     text-align: end;
-}
-
-.space {
-    flex: 1;
 }
 
 .not-included {
