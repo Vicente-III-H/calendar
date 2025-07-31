@@ -1,18 +1,30 @@
+import { useState } from 'react'
 import './calendar.css'
 
-function Day(props) {
+function CalendarHeader({ month, changeMonth }) {
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    const weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+    return (
+        <div>
+            <div id='month-name'>{monthNames[month]}</div>
+            <button onClick={() => {changeMonth(-1)}}>{"<"}</button>
+            <button onClick={() => {changeMonth()}}>Today</button>
+            <button onClick={() => {changeMonth(1)}}>{">"}</button>
+        </div>
+    )
+}
+
+function Day({ day, currentMonth }) {
     return (
         <div className='day'>
-            <div className={(props.currentMonth !== props.day.getMonth() ? "not-included": "") + " day-number"}>{props.day.getDate()}</div>
+            <div className={(currentMonth !== day.getMonth() ? "not-included": "") + " day-number"}>{day.getDate()}</div>
             <div className="space"></div>
         </div>
     )
 }
 
-function Calendar(props) {
-    const today = new Date();
-    const calendarDate = new Date(today.getFullYear(), today.getMonth() + props.monthOffset, 1);
-
+function CalendarDisplay({ calendarDate }) {
     const calendarDays = (() => {
         const startingDay = calendarDate.getDay();
         
@@ -24,14 +36,27 @@ function Calendar(props) {
         return dates;
     })();
 
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     return (
-        <>
-            <div>{monthNames[calendarDate.getMonth()]}</div>
-            <div className="calendar">
-                {calendarDays.map((day) => (<Day key={day} day={day} currentMonth={calendarDate.getMonth()}></Day>))}
-            </div>
-        </>
+        <div className="calendar">
+            {calendarDays.map((date) => (<Day key={date} day={date} currentMonth={calendarDate.getMonth()}></Day>))}
+        </div>
+    )
+}
+
+function Calendar() {
+    const [calendarMonth, setCalendarMonth] = useState(0);
+    const changeMonth = (increment = 0) => {
+        setCalendarMonth(increment !== 0 ? calendarMonth + increment : 0);
+    }
+
+    const today = new Date();
+    const calendarDate = new Date(today.getFullYear(), today.getMonth() + calendarMonth, 1);
+    
+    return (
+        <div className='calendar-container'>
+            <CalendarHeader month={calendarDate.getMonth()} changeMonth={changeMonth}></CalendarHeader>
+            <CalendarDisplay calendarDate={calendarDate}></CalendarDisplay>
+        </div>
     )
 }
 

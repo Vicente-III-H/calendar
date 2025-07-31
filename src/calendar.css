@@ -1,3 +1,7 @@
+.calendar-container {
+    flex: 3;
+}
+
 .calendar {
     flex: 1;
     aspect-ratio: 7 / 6;
