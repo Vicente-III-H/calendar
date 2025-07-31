@@ -1,5 +1,7 @@
 .calendar-container {
     flex: 3;
+    display: flex;
+    flex-direction: column;
 }
 
 #calendar-header {
@@ -26,7 +28,6 @@
 
 .calendar {
     flex: 1;
-    aspect-ratio: 7 / 6;
 
     grid-template-rows: repeat(6, 1fr);
 }
