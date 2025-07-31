@@ -7,7 +7,7 @@ function CalendarHeader({ year, month, changeMonth }) {
 
     return (
         <>
-            <div id='calendar-header' className='flex'>
+            <div id='calendar-header' className='flexbox'>
                 <div className='flex-grow'>{monthNames[month] + " " + year}</div>
                 <button onClick={() => {changeMonth(-1)}}>{"<"}</button>
                 <button onClick={() => {changeMonth()}}>Today</button>
@@ -22,7 +22,7 @@ function CalendarHeader({ year, month, changeMonth }) {
 
 function Day({ day, currentMonth }) {
     return (
-        <div className='day flex-column'>
+        <div className='day flexbox-column'>
             <div className={(currentMonth !== day.getMonth() ? "not-included": "") + " day-number"}>{day.getDate()}</div>
             <div className="space flex-grow"></div>
         </div>
@@ -58,7 +58,7 @@ function Calendar() {
     const calendarDate = new Date(today.getFullYear(), today.getMonth() + calendarMonth, 1);
     
     return (
-        <div id='calendar-container' className='flex-column'>
+        <div id='calendar-container' className='flexbox-column'>
             <CalendarHeader year={calendarDate.getFullYear()} month={calendarDate.getMonth()} changeMonth={changeMonth}></CalendarHeader>
             <CalendarDisplay calendarDate={calendarDate}></CalendarDisplay>
         </div>

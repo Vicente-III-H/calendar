@@ -6,11 +6,11 @@
   align-items: stretch;
 }
 
-.flex {
+.flexbox {
   display: flex;
 }
 
-.flex-column {
+.flexbox-column {
   display: flex;
   flex-direction: column;
 }
