@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className='container'>
-      <Calendar month={calendarMonth}></Calendar>
+      <Calendar monthOffset={calendarMonth}></Calendar>
       <button onClick={() => {changeMonth(false)}}>prev. month</button>
       <button onClick={() => {setCalendarMonth(0)}}>today</button>
       <button onClick={changeMonth}>next month</button>
