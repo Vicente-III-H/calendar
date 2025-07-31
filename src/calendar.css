@@ -1,4 +1,4 @@
-.calendar-container {
+#calendar-container {
     flex: 3;
 }
 
@@ -6,17 +6,17 @@
     font-size: 2rem;
 }
 
-.calendar, #weekdays {
+#calendar, #weekdays {
     grid-template-columns: repeat(7, 1fr);
 }
 
 #weekdays {
-    text-align: center;
-
     grid-template-rows: 2rem;
+    
+    text-align: center;
 }
 
-.calendar {
+#calendar {
     grid-template-rows: repeat(6, 1fr);
 }
 

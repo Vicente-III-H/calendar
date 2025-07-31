@@ -42,7 +42,7 @@ function CalendarDisplay({ calendarDate }) {
     })();
 
     return (
-        <div className="calendar grid flex-grow">
+        <div id='calendar' className="grid flex-grow">
             {calendarDays.map((date) => (<Day key={date} day={date} currentMonth={calendarDate.getMonth()}></Day>))}
         </div>
     )
@@ -58,7 +58,7 @@ function Calendar() {
     const calendarDate = new Date(today.getFullYear(), today.getMonth() + calendarMonth, 1);
     
     return (
-        <div className='calendar-container flex-column'>
+        <div id='calendar-container' className='flex-column'>
             <CalendarHeader year={calendarDate.getFullYear()} month={calendarDate.getMonth()} changeMonth={changeMonth}></CalendarHeader>
             <CalendarDisplay calendarDate={calendarDate}></CalendarDisplay>
         </div>
