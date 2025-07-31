@@ -1,5 +1,5 @@
 .calendar {
-    width: 100vw;
+    flex: 1;
     aspect-ratio: 7 / 6;
 
     display: grid;
