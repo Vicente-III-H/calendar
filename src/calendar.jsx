@@ -1,17 +1,22 @@
 import { useState } from 'react'
 import './calendar.css'
 
-function CalendarHeader({ month, changeMonth }) {
+function CalendarHeader({ year, month, changeMonth }) {
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
     return (
-        <div>
-            <div id='month-name'>{monthNames[month]}</div>
-            <button onClick={() => {changeMonth(-1)}}>{"<"}</button>
-            <button onClick={() => {changeMonth()}}>Today</button>
-            <button onClick={() => {changeMonth(1)}}>{">"}</button>
-        </div>
+        <>
+            <div id='calendar-header'>
+                <div>{monthNames[month] + " " + year}</div>
+                <button onClick={() => {changeMonth(-1)}}>{"<"}</button>
+                <button onClick={() => {changeMonth()}}>Today</button>
+                <button onClick={() => {changeMonth(1)}}>{">"}</button>
+            </div>
+            <div id='weekdays'>
+                {weekdayNames.map((day) => (<div key={day}>{day}</div>))}
+            </div>
+        </>
     )
 }
 
@@ -54,7 +59,7 @@ function Calendar() {
     
     return (
         <div className='calendar-container'>
-            <CalendarHeader month={calendarDate.getMonth()} changeMonth={changeMonth}></CalendarHeader>
+            <CalendarHeader year={calendarDate.getFullYear()} month={calendarDate.getMonth()} changeMonth={changeMonth}></CalendarHeader>
             <CalendarDisplay calendarDate={calendarDate}></CalendarDisplay>
         </div>
     )

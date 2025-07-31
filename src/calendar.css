@@ -2,12 +2,32 @@
     flex: 3;
 }
 
+#calendar-header {
+    display: flex;
+
+}
+
+#calendar-header div {
+    flex: 1;
+
+    font-size: 2rem;
+}
+
+.calendar, #weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+#weekdays {
+    text-align: center;
+
+    grid-template-rows: 2rem;
+}
+
 .calendar {
     flex: 1;
     aspect-ratio: 7 / 6;
 
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(6, 1fr);
 }
 
