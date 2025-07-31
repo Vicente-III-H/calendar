@@ -4,7 +4,7 @@ import Events from './events'
 
 function App() {
   return (
-    <div className='container'>
+    <div id='container' className='flexbox'>
       <Calendar></Calendar>
       <Events></Events>
     </div>
