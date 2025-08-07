@@ -19,3 +19,7 @@
 #modal {
     background-color: darkgray;
 }
+
+#modal div {
+    display: flex;
+}
