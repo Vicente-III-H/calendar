@@ -5,8 +5,7 @@ function Modal({ showModal, setShowModal }) {
     const [event, setEvent] = useState({
         name: "",
         color: DEFAULT_EVENT_COLOUR,
-        startTime: "",
-        endTime: "",
+        date: "",
         notes: ""
     });
 
@@ -15,8 +14,7 @@ function Modal({ showModal, setShowModal }) {
             const resetEvent = {
                 name: "",
                 color: DEFAULT_EVENT_COLOUR,
-                startTime: "",
-                endTime: "",
+                date: "",
                 notes: ""
             };
             setEvent(resetEvent);
@@ -32,7 +30,6 @@ function Modal({ showModal, setShowModal }) {
         return (
             <div id="modal-background" className="flexbox">
                 <div id="modal" className="flexbox-column">
-                    <button onClick={() => {setShowModal(false); updateEvent()}}>-</button>
                     <div>
                         <input
                             type="color"
@@ -41,32 +38,28 @@ function Modal({ showModal, setShowModal }) {
                         />
                         <input
                             type="text"
+                            placeholder="Event Name"
                             value={event.name}
                             onChange={(inputEvent) => updateEvent("name", inputEvent.target.value)}
                             className="flex-grow"
                         />
+                        <button onClick={() => {setShowModal(false); updateEvent()}}>-</button>
                     </div>
                     <div>
-                        <label htmlFor="start-time">Start Time</label>
+                        <label htmlFor="event-date">Date</label>
                         <input
                             type="datetime-local"
-                            value={event.startTime}
-                            onChange={(inputEvent) => updateEvent("startTime", inputEvent.target.value)}
-                            id="start-time"
+                            value={event.date}
+                            onChange={(inputEvent) => updateEvent("date", inputEvent.target.value)}
+                            id="event-date"
                         />
                     </div>
-                    <div>
-                        <input
-                            type="datetime-local"
-                            value={event.endTime}
-                            onChange={(inputEvent) => updateEvent("endTime", inputEvent.target.value)}
-                            id="end-time"
-                        />
-                    </div>
+                    <label htmlFor="notes">Notes:</label>
                     <input
                         type="text"
                         value={event.notes}
                         onChange={(inputEvent) => updateEvent("notes", inputEvent.target.value)}
+                        id="notes"
                     />
                     <button onClick={() => {updateEvent()}}>Save</button>
                 </div>
