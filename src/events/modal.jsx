@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./events.css"
 
 function Modal({ showModal, setShowModal }) {
     const DEFAULT_EVENT_COLOUR = "#ee6115";
@@ -76,22 +75,4 @@ function Modal({ showModal, setShowModal }) {
     } else { return null }
 }
 
-function Events() {
-    const [showModal, setShowModal] = useState(false);
-    
-    return (
-        <>
-            <div id="events-container" className="flex-grow flexbox-column">
-                <div id="events-header" className="flexbox">
-                    <div className="flex-grow">Events</div>
-                    <button onClick={() => {setShowModal(true)}}>+</button>
-                </div>
-                <div className="flex-grow">
-                </div>
-            </div>
-            <Modal showModal={showModal} setShowModal={setShowModal}></Modal>
-        </>
-    )
-}
-
-export default Events;
+export default Modal

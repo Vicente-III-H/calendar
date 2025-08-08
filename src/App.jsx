@@ -1,6 +1,6 @@
 import './App.css'
-import Calendar from './calendar'
-import Events from './events'
+import Calendar from './calendar/calendar'
+import Events from './events/events'
 
 function App() {
   return (
