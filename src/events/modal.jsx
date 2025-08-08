@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Modal({ showModal, setShowModal }) {
+function Modal({ showModal, setShowModal, saveEvent }) {
     const DEFAULT_EVENT_COLOUR = "#ee6115";
     const [event, setEvent] = useState({
         name: "",
@@ -61,7 +61,7 @@ function Modal({ showModal, setShowModal }) {
                         onChange={(inputEvent) => updateEvent("notes", inputEvent.target.value)}
                         id="notes"
                     />
-                    <button onClick={() => {updateEvent()}}>Save</button>
+                    <button onClick={() => {setShowModal(false); saveEvent(event); updateEvent()}}>Save</button>
                 </div>
             </div>
         )
