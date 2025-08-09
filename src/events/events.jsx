@@ -33,8 +33,8 @@ function EventCard({ event }) {
     )
 }
 
-function EventSection({ title, events }) {
-    if (events.length === 0) {
+function EventSection({ title, eventList }) {
+    if (eventList.length === 0) {
         return null;
     }
 
@@ -42,18 +42,31 @@ function EventSection({ title, events }) {
         <div>
             <div>{title}</div>
             <div className="flex-grow">
-                {events.map((event) => <EventCard key={event.id} event={event}></EventCard>)}
+                {eventList.map((event) => <EventCard key={event.id} event={event}></EventCard>)}
             </div>
         </div>
     )
 }
 
-function Events({ events, setEvents }) {
+function Events({ eventLists, setEventLists }) {
     const [showModal, setShowModal] = useState(false);
-    const addToEvents = (value) => {
-        let newArray = [...events, value];
-        newArray.sort((a, b) => { return (new Date(a.date)) - (new Date(b.date)) });
-        setEvents(newArray);
+
+    const isSameDay = (date1, date2) => {
+        return date1.getDate() === date2.getDate() &&
+               date1.getMonth() === date2.getMonth() &&
+               date1.getFullYear() === date2.getFullYear();
+    };
+    const addToEvents = (event) => {
+        const date = new Date(event.date);
+        let newEventLists = {...eventLists};
+        let selectList = "past";
+
+        if (isSameDay(date, eventLists.date)) { selectList = "today" }
+        else if (date > eventLists.date) { selectList = "upcoming" };
+
+        newEventLists[selectList].push(event);
+        newEventLists[selectList].sort((a, b) => { return (new Date(a.date)) - (new Date(b.date)) });
+        setEventLists(newEventLists);
     };
     
     return (
@@ -64,9 +77,9 @@ function Events({ events, setEvents }) {
                     <button onClick={() => {setShowModal(true)}}>+</button>
                 </div>
                 <div id="events-section-container">
-                    <EventSection title="Past" events={[]}></EventSection>
-                    <EventSection title="Today" events={events}></EventSection>
-                    <EventSection title="Future" events={[]}></EventSection>
+                    <EventSection title="Past" eventList={eventLists.past}></EventSection>
+                    <EventSection title="Today" eventList={eventLists.today}></EventSection>
+                    <EventSection title="Upcoming" eventList={eventLists.upcoming}></EventSection>
                 </div>
             </div>
             <Modal showModal={showModal} setShowModal={setShowModal} addToEvents={addToEvents}></Modal>
