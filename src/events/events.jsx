@@ -33,9 +33,8 @@ function EventCard({ event }) {
     )
 }
 
-function Events() {
+function Events({ events, setEvents }) {
     const [showModal, setShowModal] = useState(false);
-    const [events, setEvents] = useState([]);
     const addToEvents = (value) => {
         let newArray = [...events, value];
         newArray.sort((a, b) => { return (new Date(a.date)) - (new Date(b.date)) });
