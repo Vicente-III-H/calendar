@@ -60,7 +60,7 @@ function Modal({ showModal, setShowModal, addToEvents }) {
                         <button onClick={() => {
                             setShowModal(false);
                             updateEvent();
-                            }}>-</button>
+                            }}>x</button>
                     </div>
                     <div>
                         <label htmlFor="event-date">Date</label>
