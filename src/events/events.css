@@ -23,3 +23,19 @@
 #modal div {
     display: flex;
 }
+
+.event-card {
+    background-color: hsl(0, 0%, 36%);
+}
+
+.colour-box {
+    height: 1em;
+    aspect-ratio: 1 / 1;
+
+    border: 2px solid white
+}
+
+.event-card-header {
+    display: flex;
+    align-items: center;
+}
