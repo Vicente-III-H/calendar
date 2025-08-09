@@ -34,7 +34,10 @@ function EventCard({ event }) {
 }
 
 function EventSection({ title, events }) {
-    
+    if (events.length === 0) {
+        return null;
+    }
+
     return (
         <div>
             <div>{title}</div>
