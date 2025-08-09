@@ -26,9 +26,17 @@ function Modal({ showModal, setShowModal, addToEvents }) {
         if (validDate.toString() === "Invalid Date") {
             return;
         }
+
+        if (event.name.trim() === "") {
+            return;
+        }
+
         setShowModal(false);
-        event.id = crypto.randomUUID();
-        addToEvents(event);
+        let finalEvent = {...event};
+        finalEvent.name = finalEvent.name.trim();
+        finalEvent.notes = finalEvent.notes.trim();
+        finalEvent.id = crypto.randomUUID();
+        addToEvents(finalEvent);
         updateEvent();
     }
 
