@@ -1,22 +1,18 @@
 import { useState } from "react";
 
-function Modal({ showModal, setShowModal, saveEvent }) {
-    const DEFAULT_EVENT_COLOUR = "#ee6115";
-    const [event, setEvent] = useState({
+function Modal({ showModal, setShowModal, addToEvents }) {
+    const DEFAULT_EVENT = {
         name: "",
-        color: DEFAULT_EVENT_COLOUR,
+        color: "#ee6115",
         date: "",
         notes: ""
-    });
+    };
+
+    const [event, setEvent] = useState({...DEFAULT_EVENT});
 
     const updateEvent = (property = "clear", value) => {
         if (property === "clear") {
-            const resetEvent = {
-                name: "",
-                color: DEFAULT_EVENT_COLOUR,
-                date: "",
-                notes: ""
-            };
+            const resetEvent = {...DEFAULT_EVENT};
             setEvent(resetEvent);
             return;
         }
@@ -24,6 +20,15 @@ function Modal({ showModal, setShowModal, saveEvent }) {
         let updatedEvent = {...event};
         updatedEvent[property] = value;
         setEvent(updatedEvent);
+    };
+    const verifyEvent = () => {
+        const validDate = new Date(event.date);
+        if (validDate.toString() === "Invalid Date") {
+            return;
+        }
+        setShowModal(false);
+        event.id = crypto.randomUUID();
+        addToEvents(event);
     }
 
     if (showModal) {
@@ -43,7 +48,10 @@ function Modal({ showModal, setShowModal, saveEvent }) {
                             onChange={(inputEvent) => updateEvent("name", inputEvent.target.value)}
                             className="flex-grow"
                         />
-                        <button onClick={() => {setShowModal(false); updateEvent()}}>-</button>
+                        <button onClick={() => {
+                            setShowModal(false);
+                            updateEvent();
+                            }}>-</button>
                     </div>
                     <div>
                         <label htmlFor="event-date">Date</label>
@@ -61,7 +69,7 @@ function Modal({ showModal, setShowModal, saveEvent }) {
                         onChange={(inputEvent) => updateEvent("notes", inputEvent.target.value)}
                         id="notes"
                     />
-                    <button onClick={() => {setShowModal(false); saveEvent(event); updateEvent()}}>Save</button>
+                    <button onClick={() => {verifyEvent()}}>Save</button>
                 </div>
             </div>
         )

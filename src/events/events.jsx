@@ -19,12 +19,6 @@ function Events() {
         newArray.sort((a, b) => { return (new Date(a.date)) - (new Date(b.date)) });
         setEvents(newArray);
     };
-
-    const saveEvent = (event) => {
-        /* add validation */
-        event.id = crypto.randomUUID();
-        addToEvents(event);
-    }
     
     return (
         <>
@@ -37,7 +31,7 @@ function Events() {
                     {events.map((event) => <EventCard key={event.id} event={event}></EventCard>)}
                 </div>
             </div>
-            <Modal showModal={showModal} setShowModal={setShowModal} saveEvent={saveEvent}></Modal>
+            <Modal showModal={showModal} setShowModal={setShowModal} addToEvents={addToEvents}></Modal>
         </>
     )
 }
