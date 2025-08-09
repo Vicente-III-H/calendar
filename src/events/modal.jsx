@@ -29,6 +29,7 @@ function Modal({ showModal, setShowModal, addToEvents }) {
         setShowModal(false);
         event.id = crypto.randomUUID();
         addToEvents(event);
+        updateEvent();
     }
 
     if (showModal) {
