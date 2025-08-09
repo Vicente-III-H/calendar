@@ -33,6 +33,18 @@ function EventCard({ event }) {
     )
 }
 
+function EventSection({ title, events }) {
+    
+    return (
+        <div>
+            <div>{title}</div>
+            <div className="flex-grow">
+                {events.map((event) => <EventCard key={event.id} event={event}></EventCard>)}
+            </div>
+        </div>
+    )
+}
+
 function Events({ events, setEvents }) {
     const [showModal, setShowModal] = useState(false);
     const addToEvents = (value) => {
@@ -48,9 +60,9 @@ function Events({ events, setEvents }) {
                     <div className="flex-grow">Events</div>
                     <button onClick={() => {setShowModal(true)}}>+</button>
                 </div>
-                <div className="flex-grow">
-                    {events.map((event) => <EventCard key={event.id} event={event}></EventCard>)}
-                </div>
+                <EventSection title="Past" events={[]}></EventSection>
+                <EventSection title="Today" events={events}></EventSection>
+                <EventSection title="Future" events={[]}></EventSection>
             </div>
             <Modal showModal={showModal} setShowModal={setShowModal} addToEvents={addToEvents}></Modal>
         </>
