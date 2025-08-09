@@ -60,9 +60,11 @@ function Events({ events, setEvents }) {
                     <div className="flex-grow">Events</div>
                     <button onClick={() => {setShowModal(true)}}>+</button>
                 </div>
-                <EventSection title="Past" events={[]}></EventSection>
-                <EventSection title="Today" events={events}></EventSection>
-                <EventSection title="Future" events={[]}></EventSection>
+                <div id="events-section-container">
+                    <EventSection title="Past" events={[]}></EventSection>
+                    <EventSection title="Today" events={events}></EventSection>
+                    <EventSection title="Future" events={[]}></EventSection>
+                </div>
             </div>
             <Modal showModal={showModal} setShowModal={setShowModal} addToEvents={addToEvents}></Modal>
         </>

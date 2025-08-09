@@ -2,6 +2,10 @@
     border: 1px solid white;
 }
 
+#events-section-container {
+    overflow-x: scroll;
+}
+
 #modal-background {
     position: fixed;
     top: 0;
