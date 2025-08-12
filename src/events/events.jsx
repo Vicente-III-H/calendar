@@ -157,7 +157,7 @@ function Events({ eventList, setEventList }) {
                     <h1 className="flex-grow">Events</h1>
                     <button onClick={() => {setShowModal(true)}}>+</button>
                 </div>
-                <div id="events-section-container">
+                <div id="events-section-container" className="flex-grow">
                     <EventSection title="Past" eventList={getPastEvents()} deleteEvent={deleteEvent}></EventSection>
                     <EventSection title="Today" eventList={getTodaysEvents()} deleteEvent={deleteEvent}></EventSection>
                     <EventSection title="Upcoming" eventList={getUpcomingEvents()} deleteEvent={deleteEvent}></EventSection>

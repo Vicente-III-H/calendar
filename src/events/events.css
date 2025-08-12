@@ -1,5 +1,10 @@
+#events-container {
+    max-height: 100%;
+    box-sizing: border-box;
+}
+
 #events-section-container {
-    overflow-x: scroll;
+    overflow: scroll;
 }
 
 #modal-background {
@@ -25,12 +30,12 @@
 }
 
 .event-card {
-    background-color: hsl(0, 0%, 36%);
+    background-color: hsla(0, 0%, 45%, 0.75);
 }
 
 .colour-box {
     height: 1em;
     aspect-ratio: 1 / 1;
 
-    border: 2px solid white
+    border: 2px solid white;
 }
