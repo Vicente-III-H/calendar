@@ -57,10 +57,6 @@ function Modal({ showModal, setShowModal, addToEvents }) {
                             onChange={(inputEvent) => updateEvent("name", inputEvent.target.value)}
                             className="flex-grow"
                         />
-                        <button onClick={() => {
-                            setShowModal(false);
-                            updateEvent();
-                            }}>x</button>
                     </div>
                     <div>
                         <label htmlFor="event-date">Date</label>
@@ -72,13 +68,17 @@ function Modal({ showModal, setShowModal, addToEvents }) {
                         />
                     </div>
                     <label htmlFor="notes">Notes:</label>
-                    <input
-                        type="text"
+                    <textarea
+                        rows={2}
+                        cols={20}
                         value={event.notes}
                         onChange={(inputEvent) => updateEvent("notes", inputEvent.target.value)}
                         id="notes"
                     />
-                    <button onClick={() => {verifyEvent()}}>Save</button>
+                   <div>
+                        <button onClick={() => {verifyEvent()}}>Save</button>
+                        <button onClick={() => {setShowModal(false); updateEvent();}}>Cancel</button>
+                   </div>
                 </div>
             </div>
         )
