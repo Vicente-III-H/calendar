@@ -3,7 +3,7 @@ import { useState } from "react";
 function Modal({ showModal, setShowModal, addToEvents }) {
     const DEFAULT_EVENT = {
         name: "",
-        color: "#ee6115",
+        color: "#1786ee",
         date: "",
         notes: ""
     };
