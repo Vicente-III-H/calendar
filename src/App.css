@@ -1,6 +1,10 @@
 #container {
   width: 100vw;
   height: 100vh;
+
+  box-sizing: border-box;
+  padding: 15px;
+  gap: 15px;
   
   align-items: stretch;
 }
@@ -20,4 +24,15 @@
 
 .grid {
   display: grid;
+}
+
+.background {
+  border: 1px solid white;
+  border-radius: 16px;
+  overflow: hidden;
+
+  background-color: hsla(0, 0%, 15%, 0.75);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }

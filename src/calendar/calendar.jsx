@@ -8,7 +8,7 @@ function CalendarHeader({ year, month, changeMonth }) {
     return (
         <>
             <div id='calendar-header' className='flexbox'>
-                <div className='flex-grow'>{monthNames[month] + " " + year}</div>
+                <h1 className='flex-grow'>{monthNames[month] + " " + year}</h1>
                 <button onClick={() => {changeMonth(-1)}}>{"<"}</button>
                 <button onClick={() => {changeMonth()}}>Today</button>
                 <button onClick={() => {changeMonth(1)}}>{">"}</button>
@@ -72,7 +72,7 @@ function Calendar({ eventList }) {
     const monthKey = calendarDate.getFullYear() + "-" + calendarDate.getMonth();
     
     return (
-        <div id='calendar-container' className='flexbox-column'>
+        <div id='calendar-container' className='flexbox-column background'>
             <CalendarHeader year={calendarDate.getFullYear()} month={calendarDate.getMonth()} changeMonth={changeMonth}></CalendarHeader>
             <CalendarDisplay calendarDate={calendarDate} eventList={monthKey in eventList.events ? eventList.events[monthKey] : {}}></CalendarDisplay>
         </div>

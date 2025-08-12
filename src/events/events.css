@@ -1,7 +1,3 @@
-#events-container {
-    border: 1px solid white;
-}
-
 #events-section-container {
     overflow-x: scroll;
 }
@@ -17,7 +13,8 @@
     align-items: center;
 
     background-color: hsla(0, 0%, 0%, 0.25);
-    backdrop-filter: blur(5px); /* Should add webkit if blur is to be used */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 #modal {

@@ -152,9 +152,9 @@ function Events({ eventList, setEventList }) {
     
     return (
         <>
-            <div id="events-container" className="flex-grow flexbox-column">
+            <div id="events-container" className="flex-grow flexbox-column background">
                 <div id="events-header" className="flexbox">
-                    <div className="flex-grow">Events</div>
+                    <h1 className="flex-grow">Events</h1>
                     <button onClick={() => {setShowModal(true)}}>+</button>
                 </div>
                 <div id="events-section-container">
