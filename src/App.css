@@ -1,10 +1,13 @@
 #container {
   width: 100vw;
   height: 100vh;
+  /*min-width: 718px; Need to figure out how to make wrapping work nicely */
 
+  overflow: auto;
   box-sizing: border-box;
   padding: 15px;
   gap: 15px;
+  flex-wrap: wrap;
   
   align-items: stretch;
 }
@@ -22,6 +25,10 @@
   flex: 1
 }
 
+.flexbox-center-items {
+  align-items: center;
+}
+
 .grid {
   display: grid;
 }
@@ -35,4 +42,8 @@
 
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+}
+
+#calendar-header, #events-container {
+  padding: 0px 18px;
 }

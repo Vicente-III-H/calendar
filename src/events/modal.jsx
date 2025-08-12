@@ -42,7 +42,7 @@ function Modal({ showModal, setShowModal, addToEvents }) {
 
     if (showModal) {
         return (
-            <div id="modal-background" className="flexbox">
+            <div id="modal-background" className="flexbox flexbox-center-items">
                 <div id="modal" className="flexbox-column">
                     <div>
                         <input

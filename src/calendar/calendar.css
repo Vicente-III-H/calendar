@@ -1,9 +1,6 @@
 #calendar-container {
     flex: 3;
-}
-
-#calendar-header div {
-    font-size: 2rem;
+    min-width: 718px;
 }
 
 #calendar, #weekdays {

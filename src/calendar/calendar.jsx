@@ -7,7 +7,7 @@ function CalendarHeader({ year, month, changeMonth }) {
 
     return (
         <>
-            <div id='calendar-header' className='flexbox'>
+            <div id='calendar-header' className='flexbox flexbox-center-items'>
                 <h1 className='flex-grow'>{monthNames[month] + " " + year}</h1>
                 <button onClick={() => {changeMonth(-1)}}>{"<"}</button>
                 <button onClick={() => {changeMonth()}}>Today</button>

@@ -16,7 +16,7 @@ function EventCard({ event, deleteEvent }) {
 
     return (
         <div className="event-card flexbox-column">
-            <div className="event-card-header">
+            <div className="event-card-header flexbox flexbox-center-items">
                 <div style={{backgroundColor: event.color}} className="colour-box"></div>
                 <div className="flex-grow">{event.name}</div>
                 <button onClick={() => {deleteEvent(event)}}>-</button>
@@ -41,7 +41,7 @@ function EventSection({ title, eventList, deleteEvent }) {
 
     return (
         <div>
-            <div>{title}</div>
+            <h2>{title}</h2>
             <div className="flex-grow">
                 {eventList.map((event) => <EventCard key={event.id} event={event} deleteEvent={deleteEvent}></EventCard>)}
             </div>
@@ -153,7 +153,7 @@ function Events({ eventList, setEventList }) {
     return (
         <>
             <div id="events-container" className="flex-grow flexbox-column background">
-                <div id="events-header" className="flexbox">
+                <div id="events-header" className="flexbox flexbox-center-items">
                     <h1 className="flex-grow">Events</h1>
                     <button onClick={() => {setShowModal(true)}}>+</button>
                 </div>
