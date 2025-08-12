@@ -83,11 +83,22 @@ function Events({ eventList, setEventList }) {
     };
     const deleteEvent = (event) => {
         const date = new Date(event.date);
+        const key = date.getFullYear() + "-" + date.getMonth();
+        const day = date.getDate();
         let newEventList = {...eventList};
-        /* need to delete empty year, month, day */
-        const deleteIndex = newEventList.events[date.getFullYear()][date.getMonth()][date.getDate()].indexOf(event);
-        newEventList.events[date.getFullYear()][date.getMonth()][date.getDate()].splice(deleteIndex, 1);
+        
+        const deleteIndex = newEventList.events[key][day].indexOf(event);
+        newEventList.events[key][day].splice(deleteIndex, 1);
 
+        if (newEventList.events[key][day].length === 0) {
+            delete newEventList.events[key][day];
+        }
+        if (Object.keys(newEventList.events[key]).length === 0) {
+            delete newEventList.events[key];
+            const deleteKeyIndex = newEventList.order.indexOf(key);
+            newEventList.order.splice(deleteKeyIndex, 1);
+        }
+        
         setEventList(newEventList);
     };
 
