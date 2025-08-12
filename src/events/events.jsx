@@ -51,7 +51,7 @@ function EventSection({ title, eventList, deleteEvent }) {
 
 function Events({ eventList, setEventList }) {
     const [showModal, setShowModal] = useState(false);
-    
+
     const addToEvents = (event) => {
         const date = new Date(event.date);
         const year = date.getFullYear();
@@ -90,6 +90,54 @@ function Events({ eventList, setEventList }) {
 
         setEventList(newEventList);
     };
+
+    const getTodaysEvents = () => {
+        const key = eventList.date.getFullYear() + "-" + eventList.date.getMonth();
+        if (key in eventList.events && eventList.date.getDate() in eventList.events[key]) {
+            return eventList.events[key][eventList.date.getDate()];
+        }
+        return [];
+    };
+    const getPastEvents = () => {
+        let res = [];
+        const year = eventList.date.getFullYear();
+        const month = eventList.date.getMonth();
+        const day = eventList.date.getDate();
+
+        eventList.order.forEach((key) => {
+            const [keyYear, keyMonth] = key.split("-");
+            if ((+keyYear > year) || (+keyYear === year && +keyMonth > month)) { return }
+
+            let daysInMonth = Object.keys(eventList.events[key]).sort((a, b) => a - b);
+            if (+keyYear === year && +keyMonth === month) {
+                daysInMonth = daysInMonth.filter((keyDay) => +keyDay < day);
+            }
+            daysInMonth.forEach((day) => {
+                res = res.concat(eventList.events[key][day]);
+            });
+        });
+        return res;
+    };
+    const getUpcomingEvents = () => {
+        let res = [];
+        const year = eventList.date.getFullYear();
+        const month = eventList.date.getMonth();
+        const day = eventList.date.getDate();
+
+        eventList.order.forEach((key) => {
+            const [keyYear, keyMonth] = key.split("-");
+            if ((+keyYear < year) || (+keyYear === year && +keyMonth < month)) { return }
+
+            let daysInMonth = Object.keys(eventList.events[key]).sort((a, b) => a - b);
+            if (+keyYear === year && +keyMonth === month) {
+                daysInMonth = daysInMonth.filter((keyDay) => +keyDay > day);
+            }
+            daysInMonth.forEach((day) => {
+                res = res.concat(eventList.events[key][day]);
+            });
+        });
+        return res;
+    };
     
     return (
         <>
@@ -99,9 +147,9 @@ function Events({ eventList, setEventList }) {
                     <button onClick={() => {setShowModal(true)}}>+</button>
                 </div>
                 <div id="events-section-container">
-                    <EventSection title="Past" eventList={[]} deleteEvent={deleteEvent}></EventSection>
-                    <EventSection title="Today" eventList={[]} deleteEvent={deleteEvent}></EventSection>
-                    <EventSection title="Upcoming" eventList={[]} deleteEvent={deleteEvent}></EventSection>
+                    <EventSection title="Past" eventList={getPastEvents()} deleteEvent={deleteEvent}></EventSection>
+                    <EventSection title="Today" eventList={getTodaysEvents()} deleteEvent={deleteEvent}></EventSection>
+                    <EventSection title="Upcoming" eventList={getUpcomingEvents()} deleteEvent={deleteEvent}></EventSection>
                 </div>
             </div>
             <Modal showModal={showModal} setShowModal={setShowModal} addToEvents={addToEvents}></Modal>
