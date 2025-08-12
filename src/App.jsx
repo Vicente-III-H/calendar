@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div id='container' className='flexbox'>
-      <Calendar></Calendar>
+      <Calendar eventList={eventList}></Calendar>
       <Events eventList={eventList} setEventList={setEventList}></Events>
     </div>
   )
