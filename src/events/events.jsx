@@ -51,12 +51,7 @@ function EventSection({ title, eventList, deleteEvent }) {
 
 function Events({ eventList, setEventList }) {
     const [showModal, setShowModal] = useState(false);
-
-    const isSameDay = (date1, date2) => {
-        return date1.getDate() === date2.getDate() &&
-               date1.getMonth() === date2.getMonth() &&
-               date1.getFullYear() === date2.getFullYear();
-    };
+    
     const addToEvents = (event) => {
         const date = new Date(event.date);
         const year = date.getFullYear();
