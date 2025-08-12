@@ -20,8 +20,9 @@ function CalendarHeader({ year, month, changeMonth }) {
     )
 }
 
-function Day({ day, currentMonth, events }) {
+function Day({ day, currentMonth, events, today }) {
     const includedInMonth = currentMonth === day.getMonth();
+    const isToday = day.getFullYear() === today.getFullYear() && day.getMonth() === today.getMonth() && day.getDate() === today.getDate();
 
     let overloadedEvents = false;
     if (events.length > 5) {
@@ -31,7 +32,7 @@ function Day({ day, currentMonth, events }) {
 
     return (
         <div className='day flexbox-column'>
-            <div className={(includedInMonth ? "" : "not-included") + " day-number"}>{day.getDate()}</div>
+            <div className={(includedInMonth ? "" : "not-included") + (isToday ? " today" : "") + " day-number"}>{day.getDate()}</div>
             <div className="space flex-grow flexbox">
                 {events.map((event) => includedInMonth ? <div key={event.id} style={{backgroundColor: event.color}} className="day-event flex-grow"></div> : null)}
                 {includedInMonth && overloadedEvents ? <div>and more...</div> : null}
@@ -40,7 +41,7 @@ function Day({ day, currentMonth, events }) {
     )
 }
 
-function CalendarDisplay({ calendarDate, eventList }) {
+function CalendarDisplay({ calendarDate, eventList, today }) {
     const calendarDays = (() => {
         const startingDay = calendarDate.getDay();
         
@@ -54,7 +55,7 @@ function CalendarDisplay({ calendarDate, eventList }) {
 
     return (
         <div id='calendar' className="grid flex-grow">
-            {calendarDays.map((date) => (<Day key={date} day={date} currentMonth={calendarDate.getMonth()} events={date.getDate() in eventList ? eventList[date.getDate()] : []}></Day>))}
+            {calendarDays.map((date) => (<Day key={date} day={date} currentMonth={calendarDate.getMonth()} events={date.getDate() in eventList ? eventList[date.getDate()] : []} today={today}></Day>))}
         </div>
     )
 }
@@ -65,16 +66,13 @@ function Calendar({ eventList }) {
         setCalendarMonth(increment !== 0 ? calendarMonth + increment : 0);
     }
 
-    const calendarDate = (() => {
-        const today = new Date();
-        return new Date(today.getFullYear(), today.getMonth() + calendarMonth, 1);
-    })();
+    const calendarDate = new Date(eventList.date.getFullYear(), eventList.date.getMonth() + calendarMonth, 1);
     const monthKey = calendarDate.getFullYear() + "-" + calendarDate.getMonth();
     
     return (
         <div id='calendar-container' className='flexbox-column background'>
             <CalendarHeader year={calendarDate.getFullYear()} month={calendarDate.getMonth()} changeMonth={changeMonth}></CalendarHeader>
-            <CalendarDisplay calendarDate={calendarDate} eventList={monthKey in eventList.events ? eventList.events[monthKey] : {}}></CalendarDisplay>
+            <CalendarDisplay calendarDate={calendarDate} eventList={monthKey in eventList.events ? eventList.events[monthKey] : {}} today={eventList.date}></CalendarDisplay>
         </div>
     )
 }
