@@ -49,7 +49,7 @@ function EventSection({ title, eventList, deleteEvent }) {
     )
 }
 
-function Events({ eventLists, setEventLists }) {
+function Events({ eventList, setEventList }) {
     const [showModal, setShowModal] = useState(false);
 
     const isSameDay = (date1, date2) => {
@@ -62,38 +62,38 @@ function Events({ eventLists, setEventLists }) {
         const year = date.getFullYear();
         const month = date.getMonth();
         const day = date.getDate();
-        let newEventLists = {...eventLists};
+        let newEventList = {...eventList};
         
         const key = year + "-" + month;
-        if (!(key in newEventLists.events)) {
-            newEventLists.events[key] = {};
+        if (!(key in newEventList.events)) {
+            newEventList.events[key] = {};
         }
 
-        if (!(day in newEventLists.events[key])) {
-            newEventLists.events[key][day] = [];
+        if (!(day in newEventList.events[key])) {
+            newEventList.events[key][day] = [];
         }
-        newEventLists.events[key][day].push(event);
-        newEventLists.events[key][day].sort((a, b) => { return (new Date(a.date)) - (new Date(b.date)) });
+        newEventList.events[key][day].push(event);
+        newEventList.events[key][day].sort((a, b) => { return (new Date(a.date)) - (new Date(b.date)) });
 
-        if (!newEventLists.order.find((value) => value === key)) {
-            newEventLists.order.push(key);
-            newEventLists.order.sort((a, b) => {
+        if (!newEventList.order.find((value) => value === key)) {
+            newEventList.order.push(key);
+            newEventList.order.sort((a, b) => {
                 const [yearA, monthA] = a.split("-");
                 const [yearB, monthB] = b.split("-");
                 return Number(yearA) - Number(yearB) + ((Number(monthA) - Number(monthB)) / 12);
             });
         }
 
-        setEventLists(newEventLists);
+        setEventList(newEventList);
     };
     const deleteEvent = (event) => {
         const date = new Date(event.date);
-        let newEventLists = {...eventLists};
+        let newEventList = {...eventList};
         /* need to delete empty year, month, day */
-        const deleteIndex = newEventLists.events[date.getFullYear()][date.getMonth()][date.getDate()].indexOf(event);
-        newEventLists.events[date.getFullYear()][date.getMonth()][date.getDate()].splice(deleteIndex, 1);
+        const deleteIndex = newEventList.events[date.getFullYear()][date.getMonth()][date.getDate()].indexOf(event);
+        newEventList.events[date.getFullYear()][date.getMonth()][date.getDate()].splice(deleteIndex, 1);
 
-        setEventLists(newEventLists);
+        setEventList(newEventList);
     };
     
     return (
