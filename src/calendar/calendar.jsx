@@ -23,11 +23,18 @@ function CalendarHeader({ year, month, changeMonth }) {
 function Day({ day, currentMonth, events }) {
     const includedInMonth = currentMonth === day.getMonth();
 
+    let overloadedEvents = false;
+    if (events.length > 5) {
+        events = events.slice(0, 5);
+        overloadedEvents = true;
+    }
+
     return (
         <div className='day flexbox-column'>
             <div className={(includedInMonth ? "" : "not-included") + " day-number"}>{day.getDate()}</div>
             <div className="space flex-grow flexbox">
                 {events.map((event) => includedInMonth ? <div key={event.id} style={{backgroundColor: event.color}} className="day-event flex-grow"></div> : null)}
+                {includedInMonth && overloadedEvents ? <div>and more...</div> : null}
             </div>
         </div>
     )
