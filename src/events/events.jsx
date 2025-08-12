@@ -59,26 +59,40 @@ function Events({ eventLists, setEventLists }) {
     };
     const addToEvents = (event) => {
         const date = new Date(event.date);
+        const year = date.getFullYear();
+        const month = date.getMonth();
+        const day = date.getDate();
         let newEventLists = {...eventLists};
-        let selectList = "past";
+        
+        const key = year + "-" + month;
+        if (!(key in newEventLists.events)) {
+            newEventLists.events[key] = {};
+        }
 
-        if (isSameDay(date, eventLists.date)) { selectList = "today" }
-        else if (date > eventLists.date) { selectList = "upcoming" };
+        if (!(day in newEventLists.events[key])) {
+            newEventLists.events[key][day] = [];
+        }
+        newEventLists.events[key][day].push(event);
+        newEventLists.events[key][day].sort((a, b) => { return (new Date(a.date)) - (new Date(b.date)) });
 
-        newEventLists[selectList].push(event);
-        newEventLists[selectList].sort((a, b) => { return (new Date(a.date)) - (new Date(b.date)) });
+        if (!newEventLists.order.find((value) => value === key)) {
+            newEventLists.order.push(key);
+            newEventLists.order.sort((a, b) => {
+                const [yearA, monthA] = a.split("-");
+                const [yearB, monthB] = b.split("-");
+                return Number(yearA) - Number(yearB) + ((Number(monthA) - Number(monthB)) / 12);
+            });
+        }
+
         setEventLists(newEventLists);
     };
     const deleteEvent = (event) => {
         const date = new Date(event.date);
         let newEventLists = {...eventLists};
-        let selectList = "past";
+        /* need to delete empty year, month, day */
+        const deleteIndex = newEventLists.events[date.getFullYear()][date.getMonth()][date.getDate()].indexOf(event);
+        newEventLists.events[date.getFullYear()][date.getMonth()][date.getDate()].splice(deleteIndex, 1);
 
-        if (isSameDay(date, eventLists.date)) { selectList = "today" }
-        else if (date > eventLists.date) { selectList = "upcoming" };
-
-        const deleteIndex = newEventLists[selectList].indexOf(event);
-        newEventLists[selectList].splice(deleteIndex, 1);
         setEventLists(newEventLists);
     };
     
@@ -90,9 +104,9 @@ function Events({ eventLists, setEventLists }) {
                     <button onClick={() => {setShowModal(true)}}>+</button>
                 </div>
                 <div id="events-section-container">
-                    <EventSection title="Past" eventList={eventLists.past} deleteEvent={deleteEvent}></EventSection>
-                    <EventSection title="Today" eventList={eventLists.today} deleteEvent={deleteEvent}></EventSection>
-                    <EventSection title="Upcoming" eventList={eventLists.upcoming} deleteEvent={deleteEvent}></EventSection>
+                    <EventSection title="Past" eventList={[]} deleteEvent={deleteEvent}></EventSection>
+                    <EventSection title="Today" eventList={[]} deleteEvent={deleteEvent}></EventSection>
+                    <EventSection title="Upcoming" eventList={[]} deleteEvent={deleteEvent}></EventSection>
                 </div>
             </div>
             <Modal showModal={showModal} setShowModal={setShowModal} addToEvents={addToEvents}></Modal>

@@ -6,9 +6,8 @@ import Events from './events/events'
 function App() {
   const [eventLists, setEventLists] = useState({
     date: new Date(),
-    past: [],
-    today: [],
-    upcoming: []
+    events: {},
+    order: []
   });
 
   return (
