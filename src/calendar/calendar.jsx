@@ -8,7 +8,7 @@ function CalendarHeader({ year, month, changeMonth }) {
     return (
         <>
             <div id='calendar-header' className='flexbox flexbox-center-items'>
-                <h1 className='flex-grow'>{monthNames[month] + " " + year}</h1>
+                <h1 className='major-title flex-grow'>{monthNames[month] + " " + year}</h1>
                 <button onClick={() => {changeMonth(-1)}}>{"<"}</button>
                 <button onClick={() => {changeMonth()}}>Today</button>
                 <button onClick={() => {changeMonth(1)}}>{">"}</button>
@@ -33,7 +33,7 @@ function Day({ day, currentMonth, events, today }) {
 
     return (
         <div className='day flexbox-column'>
-            <div className={(includedInMonth ? "" : "not-included") + (isToday ? " today" : "") + " day-number"}>{day.getDate()}</div>
+            <div className={(includedInMonth ? "regular-title" : "not-included") + (isToday ? " today" : "") + " day-number"}>{day.getDate()}</div>
             <div className="space grid flex-grow">
                 {events.map((event) => includedInMonth ? <div key={event.id} style={{backgroundColor: event.color}} className="day-event"></div> : null)}
                 {includedInMonth && overloadedEvents ? <div className="overloaded-events">...</div> : null}

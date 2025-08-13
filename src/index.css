@@ -13,7 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body, h2 {
+body, h1, h2 {
   margin: 0;
 }
 
@@ -28,11 +28,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-h1 {
-  font-size: 2rem;
-  line-height: 1.1;
 }
 
 /* change button */
