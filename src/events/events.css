@@ -57,3 +57,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.event-notes {
+    font-style: italic;
+    hyphens: auto;
+}

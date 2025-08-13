@@ -27,7 +27,7 @@ function EventCard({ event, deleteEvent }) {
             <div>
                 {formatTime(event.date)}
             </div>
-            <div>
+            <div className="event-notes">
                 {event.notes}
             </div>
         </div>
