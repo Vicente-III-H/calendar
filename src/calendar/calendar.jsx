@@ -14,7 +14,7 @@ function CalendarHeader({ year, month, changeMonth }) {
                 <button onClick={() => {changeMonth(1)}}>{">"}</button>
             </div>
             <div id='weekdays' className='grid'>
-                {weekdayNames.map((day) => (<div key={day}>{day}</div>))}
+                {weekdayNames.map((day) => (<div key={day} className='regular-title'>{day}</div>))}
             </div>
         </>
     )

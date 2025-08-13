@@ -3,7 +3,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* to check for consistency, remove line below for testing */
+  color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -35,6 +36,7 @@ button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.4em 0.7em;
+  color: inherit;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;

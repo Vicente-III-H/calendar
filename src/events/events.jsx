@@ -27,7 +27,7 @@ function EventCard({ event, deleteEvent }) {
             <div>
                 {formatTime(event.date)}
             </div>
-            <div className="event-notes">
+            <div style={event.notes === "" ? {} : {paddingTop: "0.1em"}} className="event-notes">
                 {event.notes}
             </div>
         </div>

@@ -40,7 +40,7 @@
 
 /* MAIN LAYOUT STYLING */
 #container {
-  width: max(calc(720px + 15px + 15px), 100vw);
+  width: max(calc(864px + 15px + 15px), 100vw);
   height: 100vh;
 
   overflow: auto;

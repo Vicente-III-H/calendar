@@ -1,6 +1,6 @@
 #calendar-container {
     flex: 2.5;
-    min-width: 720px;
+    min-width: 864px;
 }
 
 #calendar, #weekdays {
@@ -9,8 +9,13 @@
 
 #weekdays {
     grid-template-rows: 2rem;
-    
+    padding-bottom: 2px;
+
     text-align: center;
+}
+
+#weekdays div {
+    font-size: 1.1rem;
 }
 
 #calendar {
@@ -45,7 +50,7 @@
 }
 
 .today {
-    color: red;
+    color: hsl(0, 100%, 63%);
 }
 
 .overloaded-events {

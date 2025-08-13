@@ -48,11 +48,12 @@
 }
 
 .event-card-header {
-    align-items: center;
     gap: 8px;
 }
 
 .event-name {
+    font-size: 1.1em;
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
