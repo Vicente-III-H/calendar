@@ -1,12 +1,9 @@
-#events-container {
-    max-height: 100%;
-    box-sizing: border-box;
-}
-
+/* EVENTS CONTAINER */
 #events-section-container {
     overflow: scroll;
 }
 
+/* MODAL */
 #modal-background {
     position: fixed;
     top: 0;
@@ -29,13 +26,30 @@
     display: flex;
 }
 
-.event-card {
-    background-color: hsla(0, 0%, 45%, 0.75);
+/* EVENT SECTIONS */
+.event-section-title {
+    margin-bottom: 8px;
 }
 
-.colour-box {
-    height: 1em;
-    aspect-ratio: 1 / 1;
+.event-section {
+    margin-bottom: 14px;
+    gap: 12px;
+}
 
-    border: 2px solid white;
+/* EVENT CARDS */
+.event-card {
+    background-color: hsla(0, 0%, 45%, 0.75);
+    border-radius: 12px;
+    padding: 8px 12px;
+}
+
+.event-card-header {
+    align-items: center;
+    gap: 8px;
+}
+
+.event-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

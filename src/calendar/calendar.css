@@ -1,5 +1,5 @@
 #calendar-container {
-    flex: 3;
+    flex: 2.5;
     min-width: 718px;
 }
 
@@ -31,10 +31,23 @@
     color: grey;
 }
 
-.day-event {
-    
+.space {
+    /* Strange how empty days collapse as font size/zoom increases... */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+
+    padding: 0 12px;
+    padding-bottom: 8px;
 }
 
 .today {
     color: red;
+}
+
+.overloaded-events {
+    text-align: center;
 }
