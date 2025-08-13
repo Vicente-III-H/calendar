@@ -18,6 +18,10 @@ body, h1, h2 {
   margin: 0;
 }
 
+#root {
+  overflow-x: auto;
+}
+
 body {
   display: flex;
   place-items: center;

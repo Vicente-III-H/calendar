@@ -72,6 +72,14 @@
   box-sizing: border-box;
 }
 
+#calendar-container {
+  min-height: 626px;
+}
+
+#events-container {
+  min-height: 454px;
+}
+
 .day-event, .colour-box {
   border-radius: 50%;
   border: 2px solid white;
