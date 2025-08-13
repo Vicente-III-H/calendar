@@ -1,7 +1,6 @@
 #container {
-  width: 100vw;
+  width: max(calc(720px + 15px + 15px), 100vw);
   height: 100vh;
-  /*min-width: 718px; Need to figure out how to make wrapping work nicely */
 
   overflow: auto;
   box-sizing: border-box;

@@ -1,6 +1,6 @@
 #calendar-container {
     flex: 2.5;
-    min-width: 718px;
+    min-width: 720px;
 }
 
 #calendar, #weekdays {
@@ -15,6 +15,7 @@
 
 #calendar {
     grid-template-rows: repeat(6, 1fr);
+    overflow: auto;
 }
 
 .day {
@@ -32,7 +33,6 @@
 }
 
 .space {
-    /* Strange how empty days collapse as font size/zoom increases... */
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     justify-content: center;
