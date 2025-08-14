@@ -46,7 +46,8 @@ function Modal({ showModal, setShowModal, addToEvents }) {
                 <div id="modal" className="flexbox-column">
                     <div>
                         <label htmlFor="event-colour">
-                            <div id="event-colour-cover" style={{backgroundColor: event.color}}>
+                            <div id="event-colour-container">
+                                <div id="event-colour-cover" style={{backgroundColor: event.color}}></div>
                                 <input
                                     type="color"
                                     value={event.color}
