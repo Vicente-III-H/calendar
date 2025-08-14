@@ -25,10 +25,12 @@
 
 .day {
     border: 1px solid white;
+    min-width: 0;
+    min-height: 0;
+    padding-top: 3px;
 }
 
 .day-number {
-    padding-top: 3px;
     padding-right: 6px;
     text-align: end;
 }
@@ -37,22 +39,36 @@
     color: grey;
 }
 
-.space {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
-    align-items: center;
-
-    padding: 0 12px;
-    padding-bottom: 8px;
-}
-
 .today {
     color: hsl(0, 100%, 63%);
 }
 
-.overloaded-events {
-    text-align: center;
+.space {
+    padding: 0px 6px;
+    padding-bottom: 6px;
+
+    overflow: auto;
+
+    gap: 4px;
+}
+
+.day-event {
+    font-size: 0.7em;
+    border-radius: 10px;
+    padding: 1px 0px;
+    padding-left: 4px;
+    padding-right: 6px;
+    gap: 4px;
+
+    background-color: hsla(0, 0%, 45%, 0.75);
+}
+
+.day-event-colour {
+    border-width: 1px;
+}
+
+.day-event-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

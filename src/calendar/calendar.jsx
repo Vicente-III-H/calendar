@@ -24,19 +24,17 @@ function Day({ day, currentMonth, events, today }) {
     const includedInMonth = currentMonth === day.getMonth();
     const isToday = day.getFullYear() === today.getFullYear() && day.getMonth() === today.getMonth() && day.getDate() === today.getDate();
 
-    const MAX_EVENTS = 5;
-    let overloadedEvents = false;
-    if (events.length > MAX_EVENTS) {
-        events = events.slice(0, MAX_EVENTS);
-        overloadedEvents = true;
-    }
-
     return (
         <div className='day flexbox-column'>
             <div className={(includedInMonth ? "regular-title" : "not-included") + (isToday ? " today" : "") + " day-number"}>{day.getDate()}</div>
-            <div className="space grid flex-grow">
-                {events.map((event) => includedInMonth ? <div key={event.id} style={{backgroundColor: event.color}} className="day-event"></div> : null)}
-                {includedInMonth && overloadedEvents ? <div className="overloaded-events">...</div> : null}
+            <div className="space flex-grow flexbox-column">
+                {events.map((event) =>
+                    includedInMonth ?
+                    <div key={event.id} className="day-event flexbox flexbox-center-items">
+                        <div className="day-event-colour" style={{backgroundColor: event.color}}></div>
+                        <div className="day-event-name">{event.name}</div>
+                    </div> :
+                    null)}
             </div>
         </div>
     )
