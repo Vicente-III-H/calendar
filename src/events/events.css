@@ -29,6 +29,7 @@
 /* EVENT SECTIONS */
 #events-section-container {
     overflow: scroll;
+    padding-bottom: calc(21px - 14px);
 }
 
 .event-section-title {
