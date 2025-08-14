@@ -21,6 +21,22 @@
     display: flex;
 }
 
+#event-colour {
+    max-width: 0px;
+    max-height: 0px;
+}
+
+#event-colour-cover {
+    border-radius: 50%;
+    border: 2px solid white;
+    width: auto;
+    height: 1em;
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    align-items: flex-end;
+}
+
 /* EVENTS CONTAINER */
 #events-container {
     min-width: 278px;

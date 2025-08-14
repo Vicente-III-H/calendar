@@ -35,6 +35,17 @@ body {
   background-size: cover;
 }
 
+button, input, textarea {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  color: inherit;
+  font-weight: 500;
+  font-family: inherit;
+  border-width: 0px;
+  padding: 0px;
+}
+
 /* change button */
 button {
   border-radius: 8px;
