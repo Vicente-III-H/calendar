@@ -65,7 +65,7 @@ function Modal({ showModal, setShowModal, addToEvents }) {
                         />
                     </div>
                     <div>
-                        <label htmlFor="event-date">Date</label>
+                        <label htmlFor="event-date">Date:</label>
                         <input
                             type="datetime-local"
                             value={event.date}
