@@ -3,7 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* to check for consistency, remove line below for testing */
   color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -35,6 +34,10 @@ body {
   background-size: cover;
 }
 
+label {
+  font-weight: 500;
+}
+
 button, input, textarea {
   appearance: none;
   -moz-appearance: none;
@@ -42,23 +45,32 @@ button, input, textarea {
   color: inherit;
   font-weight: 500;
   font-family: inherit;
+  font-size: inherit;
   border-width: 0px;
   padding: 0px;
 }
 
-/* change button */
+input, textarea {
+  background-color: transparent;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
+  background-color: hsla(0, 0%, 100%, 0.2);
   padding: 0.4em 0.7em;
   color: inherit;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: hsla(0, 0%, 100%, 0.3);
 }

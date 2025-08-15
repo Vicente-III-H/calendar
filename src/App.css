@@ -53,7 +53,7 @@
 }
 
 .background {
-  border: 2px solid hsla(0, 0%, 100%, 0.75);
+  border: 2px solid hsla(0, 0%, 100%, 0.3);
   border-radius: 16px;
   overflow: hidden;
 

@@ -43,8 +43,8 @@ function Modal({ showModal, setShowModal, addToEvents }) {
     if (showModal) {
         return (
             <div id="modal-background" className="flexbox flexbox-center-items">
-                <div id="modal" className="flexbox-column">
-                    <div>
+                <div id="modal" className="flexbox-column background">
+                    <div id="modal-row-header" className="flexbox-center-items">
                         <label htmlFor="event-colour">
                             <div id="event-colour-container">
                                 <div id="event-colour-cover" style={{backgroundColor: event.color}}></div>
@@ -56,35 +56,44 @@ function Modal({ showModal, setShowModal, addToEvents }) {
                                 />
                             </div>
                         </label>
-                        <input
-                            type="text"
-                            placeholder="Event Name"
-                            value={event.name}
-                            onChange={(inputEvent) => updateEvent("name", inputEvent.target.value)}
-                            className="flex-grow"
-                        />
+                        <div className="input-background flex-grow">
+                            <input
+                                type="text"
+                                placeholder="Event Name..."
+                                value={event.name}
+                                onChange={(inputEvent) => updateEvent("name", inputEvent.target.value)}
+                                id="event-name"
+                                className="flex-grow"
+                            />
+                        </div>
                     </div>
-                    <div>
+                    <div id="modal-row-date" className="flexbox-center-items">
                         <label htmlFor="event-date">Date:</label>
-                        <input
-                            type="datetime-local"
-                            value={event.date}
-                            onChange={(inputEvent) => updateEvent("date", inputEvent.target.value)}
-                            id="event-date"
-                        />
+                        <div className="input-background">
+                            <input
+                                type="datetime-local"
+                                value={event.date}
+                                onChange={(inputEvent) => updateEvent("date", inputEvent.target.value)}
+                                id="event-date"
+                            />
+                        </div>
                     </div>
-                    <label htmlFor="notes">Notes:</label>
-                    <textarea
-                        rows={2}
-                        cols={20}
-                        value={event.notes}
-                        onChange={(inputEvent) => updateEvent("notes", inputEvent.target.value)}
-                        id="notes"
-                    />
-                   <div>
-                        <button onClick={() => {verifyEvent()}}>Save</button>
+                    <div id="modal-row-notes" className="flexbox-column">
+                        <label htmlFor="notes">Notes:</label>
+                        <div className="input-background">
+                            <textarea
+                                rows={4}
+                                cols={40}
+                                value={event.notes}
+                                onChange={(inputEvent) => updateEvent("notes", inputEvent.target.value)}
+                                id="notes"
+                            />
+                        </div>
+                    </div>
+                    <div id="modal-row-buttons">
+                        <button onClick={() => {verifyEvent()}}>Add</button>
                         <button onClick={() => {setShowModal(false); updateEvent();}}>Cancel</button>
-                   </div>
+                    </div>
                 </div>
             </div>
         )
