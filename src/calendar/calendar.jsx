@@ -20,12 +20,12 @@ function CalendarHeader({ year, month, changeMonth }) {
     )
 }
 
-function Day({ day, currentMonth, events, today }) {
+function Day({ day, currentMonth, events, today, isAtEnd }) {
     const includedInMonth = currentMonth === day.getMonth();
     const isToday = day.getFullYear() === today.getFullYear() && day.getMonth() === today.getMonth() && day.getDate() === today.getDate();
 
     return (
-        <div className='day flexbox-column'>
+        <div className={"day flexbox-column" + (isAtEnd ? " day-no-border": "")}>
             <div className={(includedInMonth ? "regular-title" : "not-included") + (isToday ? " today" : "") + " day-number"}>{day.getDate()}</div>
             <div className="space flex-grow flexbox-column">
                 {events.map((event) =>
@@ -54,7 +54,16 @@ function CalendarDisplay({ calendarDate, eventList, today }) {
 
     return (
         <div id='calendar' className="grid flex-grow">
-            {calendarDays.map((date) => (<Day key={date} day={date} currentMonth={calendarDate.getMonth()} events={date.getDate() in eventList ? eventList[date.getDate()] : []} today={today}></Day>))}
+            {calendarDays.map((date, index) => 
+                <Day
+                    key={date}
+                    day={date}
+                    currentMonth={calendarDate.getMonth()}
+                    events={date.getDate() in eventList ? eventList[date.getDate()] : []}
+                    today={today}
+                    isAtEnd={(index + 1) % 7 === 0}
+                />
+            )}
         </div>
     )
 }

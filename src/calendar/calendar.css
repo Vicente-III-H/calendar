@@ -24,10 +24,16 @@
 }
 
 .day {
-    border: 1px solid hsla(0, 0%, 100%, 0.3);
+    border-width: 2px 2px 0px 0px;
+    border-color: hsla(0, 0%, 100%, 0.3);
+    border-style: solid;
     min-width: 0;
     min-height: 0;
     padding-top: 3px;
+}
+
+.day-no-border {
+    border-right-width: 0px;
 }
 
 .day-number {
