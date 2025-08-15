@@ -50,8 +50,12 @@
     align-items: stretch;
 }
 
-.input-background:focus-within {
+.input-background:hover, .input-background:focus-within {
     outline: 2px solid hsla(0, 0%, 100%, 0.5);
+}
+
+.input-background, #event-colour-container {
+    transition: outline 0.2s;
 }
 
 #modal-row-header .input-background {
@@ -87,8 +91,8 @@ input::placeholder {
     position: relative;
 }
 
-#event-colour-container:focus-within {
-    outline: 3px solid hsla(0, 0%, 100%, 0.7);
+#event-colour-container:hover, #event-colour-container:focus-within {
+    outline: 3px solid hsla(0, 0%, 100%, 0.5);
 }
 
 #event-colour {
