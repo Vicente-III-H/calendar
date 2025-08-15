@@ -12,7 +12,7 @@ function Modal({ showModal, setShowModal, addToEvents }) {
 
     const updateEvent = (property = "clear", value) => {
         if (property === "clear") {
-            const resetEvent = {...DEFAULT_EVENT};
+            const resetEvent = {...DEFAULT_EVENT, color: event.color};
             setEvent(resetEvent);
             return;
         }
