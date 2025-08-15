@@ -50,6 +50,10 @@
     align-items: stretch;
 }
 
+.input-background:focus-within {
+    outline: 2px solid hsla(0, 0%, 100%, 0.5);
+}
+
 #modal-row-header .input-background {
     padding: 6px 8px;
 }
@@ -81,6 +85,10 @@ input::placeholder {
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
+}
+
+#event-colour-container:focus-within {
+    outline: 3px solid hsla(0, 0%, 100%, 0.7);
 }
 
 #event-colour {
