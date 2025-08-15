@@ -39,6 +39,7 @@
 }
 
 #modal-row-buttons {
+    gap: 8px;
     padding-top: 12px;
 }
 

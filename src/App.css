@@ -85,7 +85,7 @@
   padding: 0px 22px;
 }
 
-#calendar-header, #modal-row-buttons {
+#calendar-header {
   gap: 8px;
 }
 
