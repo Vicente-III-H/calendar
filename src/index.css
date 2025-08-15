@@ -59,6 +59,12 @@ input, textarea {
   outline: none;
 }
 
+button, label {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 textarea {
   resize: none;
 }

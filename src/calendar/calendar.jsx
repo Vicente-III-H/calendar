@@ -32,7 +32,7 @@ function Day({ day, currentMonth, events, today, isAtEnd }) {
                     includedInMonth ?
                     <div key={event.id} className="day-event flexbox flexbox-center-items">
                         <div className="day-event-colour" style={{backgroundColor: event.color}}></div>
-                        <div className="day-event-name">{event.name}</div>
+                        <div className="day-event-name text-select">{event.name}</div>
                     </div> :
                     null)}
             </div>
@@ -78,7 +78,7 @@ function Calendar({ eventList }) {
     const monthKey = calendarDate.getFullYear() + "-" + calendarDate.getMonth();
     
     return (
-        <div id='calendar-container' className='flexbox-column background'>
+        <div id='calendar-container' className='flexbox-column background prevent-select'>
             <CalendarHeader year={calendarDate.getFullYear()} month={calendarDate.getMonth()} changeMonth={changeMonth}></CalendarHeader>
             <CalendarDisplay calendarDate={calendarDate} eventList={monthKey in eventList.events ? eventList.events[monthKey] : {}} today={eventList.date}></CalendarDisplay>
         </div>

@@ -15,9 +15,9 @@ function EventCard({ event, deleteEvent }) {
     };
 
     return (
-        <div className="event-card flexbox-column">
+        <div className="event-card flexbox-column text-select">
             <div className="event-card-header flexbox flexbox-center-items">
-                <div style={{backgroundColor: event.color}} className="colour-box"></div>
+                <div style={{backgroundColor: event.color}} className="colour-box prevent-select"></div>
                 <div className="event-name flex-grow regular-title">{event.name}</div>
                 <button onClick={() => {deleteEvent(event)}}>-</button>
             </div>
@@ -154,7 +154,7 @@ function Events({ eventList, setEventList }) {
     
     return (
         <>
-            <div id="events-container" className="flex-grow flexbox-column background">
+            <div id="events-container" className="flex-grow flexbox-column background prevent-select">
                 <div id="events-header" className="flexbox flexbox-center-items">
                     <h1 className="major-title flex-grow">Events</h1>
                     <button onClick={() => {setShowModal(true)}}>+</button>

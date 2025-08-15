@@ -20,6 +20,18 @@
   display: grid;
 }
 
+.prevent-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.text-select {
+  user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+}
+
 /* TEXT CLASSES */
 .major-title {
   font-size: 2rem;
