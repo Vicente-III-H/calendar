@@ -63,14 +63,18 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-#calendar-header, #events-header, #events-section-container {
-  padding: 0px 22px;
-}
-
 #calendar-container, #events-container {
   max-height: 100%;
   box-sizing: border-box;
   min-height: 560px;
+}
+
+#calendar-header, #events-header, #events-section-container {
+  padding: 0px 22px;
+}
+
+#calendar-header, #modal-row-buttons {
+  gap: 8px;
 }
 
 .day-event-colour, .colour-box {
@@ -79,4 +83,8 @@
   width: auto;
   height: 1em;
   aspect-ratio: 1 / 1;
+}
+
+#calendar-header button, #events-header button {
+  font-size: 1.1rem;
 }
