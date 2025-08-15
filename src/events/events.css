@@ -44,18 +44,16 @@
 
 .input-background {
     border-radius: 8px;
+    border: 2px solid transparent;
     background-color: hsla(0, 0%, 100%, 0.2);
     padding: 4px 6px;
     display: flex;
     align-items: stretch;
+    transition: border-color 0.2s;
 }
 
 .input-background:hover, .input-background:focus-within {
-    outline: 2px solid hsla(0, 0%, 100%, 0.5);
-}
-
-.input-background, #event-colour-container {
-    transition: outline 0.2s;
+    border-color: hsla(0, 0%, 100%, 0.5);
 }
 
 #modal-row-header .input-background {
@@ -89,6 +87,7 @@ input::placeholder {
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
+    transition: outline-width 0.2s;
 }
 
 #event-colour-container:hover, #event-colour-container:focus-within {
