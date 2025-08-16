@@ -91,7 +91,7 @@ function Modal({ showModal, setShowModal, addToEvents }) {
                         </div>
                     </div>
                     <div id="modal-row-buttons">
-                        <button onClick={() => {verifyEvent()}}>Add</button>
+                        <button className="highlighted-button" onClick={() => {verifyEvent()}}>Add</button>
                         <button onClick={() => {setShowModal(false); updateEvent();}}>Cancel</button>
                     </div>
                 </div>

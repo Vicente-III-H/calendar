@@ -19,7 +19,7 @@ function EventCard({ event, deleteEvent }) {
             <div className="event-card-header flexbox flexbox-center-items">
                 <div style={{backgroundColor: event.color}} className="colour-box prevent-select"></div>
                 <div className="event-name flex-grow regular-title">{event.name}</div>
-                <button onClick={() => {deleteEvent(event)}}>-</button>
+                <button className="delete-button" onClick={() => {deleteEvent(event)}}>-</button>
             </div>
             <div>
                 {formatDate(event.date)}
@@ -157,7 +157,7 @@ function Events({ eventList, setEventList }) {
             <div id="events-container" className="flex-grow flexbox-column background prevent-select">
                 <div id="events-header" className="flexbox flexbox-center-items">
                     <h1 className="major-title flex-grow">Events</h1>
-                    <button onClick={() => {setShowModal(true)}}>+</button>
+                    <button className="highlighted-button" onClick={() => {setShowModal(true)}}>+</button>
                 </div>
                 <div id="events-section-container" className="flex-grow">
                     <EventSection title="Past" eventList={getPastEvents()} deleteEvent={deleteEvent}></EventSection>

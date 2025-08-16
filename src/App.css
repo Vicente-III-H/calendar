@@ -100,3 +100,16 @@
 #calendar-header button, #events-header button {
   font-size: 1.1rem;
 }
+
+.delete-button, .highlighted-button {
+  transition: background-color 0.25s;
+}
+
+.delete-button:hover {
+  background-color: hsla(0, 100%, 63%, 0.5);
+}
+
+.highlighted-button:hover {
+  border-color: hsla(0, 0%, 100%, 0.3);
+  background-color: hsla(0, 0%, 100%, 0.325);
+}
