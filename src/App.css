@@ -110,6 +110,7 @@
 }
 
 .highlighted-button:hover {
+  color: hsl(0, 0%, 100%);
   border-color: hsla(0, 0%, 100%, 0.3);
   background-color: hsla(0, 0%, 100%, 0.325);
 }
