@@ -18,6 +18,8 @@
 
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+
+    --invalid-color: hsl(0, 100%, 63%);
 }
 
 #modal > div {
@@ -103,6 +105,15 @@ input::placeholder {
     position: absolute;
     width: 100%;
     height: 100%;
+}
+
+#modal-invalid-message {
+    color: var(--invalid-color);
+    font-weight: 500;
+}
+
+.invalid-input {
+    border-color: var(--invalid-color);
 }
 
 /* EVENTS CONTAINER */
