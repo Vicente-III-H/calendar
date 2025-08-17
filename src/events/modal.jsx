@@ -7,13 +7,67 @@ function Modal({ showModal, setShowModal, addToEvents }) {
         date: "",
         notes: ""
     };
+    const DEFAULT_INVALID_INPUTS = {
+        showMessage: false,
+        name: false,
+        date: false
+    };
 
     const [event, setEvent] = useState({...DEFAULT_EVENT});
+    const [invalidInputs, setInvalidInputs] = useState({...DEFAULT_INVALID_INPUTS});
 
+    const removeInvalid = (input) => {
+        switch (input) {
+            case "name":
+                if (invalidInputs.name) {
+                    setInvalidInputs({...invalidInputs, name: false});
+                }
+                return;
+            case "date":
+                if (invalidInputs.date) {
+                    setInvalidInputs({...invalidInputs, date: false});
+                }
+                return;
+            default:
+                return;
+        }
+    };
+    const checkInvalidInputs = () => {
+        let invalid = false;
+        let newInvalidInputs = {...invalidInputs};
+
+        for (const input in newInvalidInputs) {
+            switch (input) {
+                case "name":
+                    if (event.name.trim() === "") {
+                        newInvalidInputs.name = true;
+                        invalid = true;
+                    } else {
+                        newInvalidInputs.name = false;
+                    }
+                    continue;
+                case "date":
+                    const validDate = new Date(event.date);
+                    if (validDate.toString() === "Invalid Date") {
+                        newInvalidInputs.date = true;
+                        invalid = true;
+                    } else {
+                        newInvalidInputs.date = false;
+                    }
+                    continue;
+                default:
+                    continue;
+            }
+        }
+
+        newInvalidInputs.showMessage = invalid;
+
+        setInvalidInputs(newInvalidInputs);
+        return invalid;
+    };
     const updateEvent = (property = "clear", value) => {
         if (property === "clear") {
-            const resetEvent = {...DEFAULT_EVENT, color: event.color};
-            setEvent(resetEvent);
+            setEvent({...DEFAULT_EVENT, color: event.color});
             return;
         }
 
@@ -22,22 +76,23 @@ function Modal({ showModal, setShowModal, addToEvents }) {
         setEvent(updatedEvent);
     };
     const verifyEvent = () => {
-        const validDate = new Date(event.date);
-        if (validDate.toString() === "Invalid Date") {
-            return;
-        }
+        if (checkInvalidInputs()) { return };
 
-        if (event.name.trim() === "") {
-            return;
-        }
-
+        closeModal(() => {
+            let finalEvent = {...event};
+            finalEvent.name = finalEvent.name.trim();
+            finalEvent.notes = finalEvent.notes.trim();
+            finalEvent.id = crypto.randomUUID();
+            addToEvents(finalEvent);
+        });
+    }
+    const closeModal = (callback = null) => {
         setShowModal(false);
-        let finalEvent = {...event};
-        finalEvent.name = finalEvent.name.trim();
-        finalEvent.notes = finalEvent.notes.trim();
-        finalEvent.id = crypto.randomUUID();
-        addToEvents(finalEvent);
+        if (typeof callback === "function") {
+            callback();
+        }
         updateEvent();
+        setInvalidInputs({...DEFAULT_INVALID_INPUTS});
     }
 
     if (showModal) {
@@ -56,12 +111,13 @@ function Modal({ showModal, setShowModal, addToEvents }) {
                                 />
                             </div>
                         </label>
-                        <div className="input-background flex-grow">
+                        <div className={"input-background flex-grow" + (invalidInputs.name ? " invalid-input" : "")}>
                             <input
                                 type="text"
                                 placeholder="Event Name..."
                                 value={event.name}
                                 onChange={(inputEvent) => updateEvent("name", inputEvent.target.value)}
+                                onClick={() => {removeInvalid("name")}}
                                 id="event-name"
                                 className="flex-grow"
                             />
@@ -69,11 +125,12 @@ function Modal({ showModal, setShowModal, addToEvents }) {
                     </div>
                     <div id="modal-row-date" className="flexbox-center-items">
                         <label htmlFor="event-date">Date:</label>
-                        <div className="input-background">
+                        <div className={"input-background" + (invalidInputs.date ? " invalid-input" : "")}>
                             <input
                                 type="datetime-local"
                                 value={event.date}
                                 onChange={(inputEvent) => updateEvent("date", inputEvent.target.value)}
+                                onClick={() => {removeInvalid("date")}}
                                 id="event-date"
                             />
                         </div>
@@ -90,9 +147,12 @@ function Modal({ showModal, setShowModal, addToEvents }) {
                             />
                         </div>
                     </div>
+                    <div id="modal-invalid-message">
+                        {invalidInputs.showMessage ? "Please fill in fields marked in red" : ""}
+                    </div>
                     <div id="modal-row-buttons">
                         <button className="highlighted-button" onClick={() => {verifyEvent()}}>Add</button>
-                        <button onClick={() => {setShowModal(false); updateEvent();}}>Cancel</button>
+                        <button onClick={closeModal}>Cancel</button>
                     </div>
                 </div>
             </div>
