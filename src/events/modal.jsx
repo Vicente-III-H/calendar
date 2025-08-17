@@ -147,7 +147,7 @@ function Modal({ showModal, setShowModal, addToEvents }) {
                             />
                         </div>
                     </div>
-                    <div id="modal-invalid-message">
+                    <div id="modal-invalid-message" className="prevent-select">
                         {invalidInputs.showMessage ? "Please fill in fields marked in red" : ""}
                     </div>
                     <div id="modal-row-buttons">

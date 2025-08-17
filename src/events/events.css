@@ -42,7 +42,6 @@
 
 #modal-row-buttons {
     gap: 8px;
-    padding-top: 12px;
 }
 
 .input-background {
@@ -110,6 +109,8 @@ input::placeholder {
 #modal-invalid-message {
     color: var(--invalid-color);
     font-weight: 500;
+    padding-top: 5px;
+    padding-bottom: 7px;
 }
 
 .invalid-input {
