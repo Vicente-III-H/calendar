@@ -141,7 +141,7 @@ input::placeholder {
 .event-card {
     background-color: hsla(0, 0%, 100%, 0.2);
     border-radius: 12px;
-    padding: 8px 12px;
+    padding: 0.6rem 0.9rem;
 }
 
 .event-card-header {
