@@ -67,6 +67,7 @@ button, label {
 
 textarea {
   resize: none;
+  font-weight: 400;
 }
 
 button {
@@ -76,7 +77,6 @@ button {
   padding: 0.4em 0.7em;
   color: inherit;
   font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
