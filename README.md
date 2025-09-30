@@ -2,7 +2,7 @@
 ![Calendar project filled with events](./readme-assets/calendar-with-events.png)
 
 ## Motivation
-The motivation behind creating this Calendar application was to practice React and web development concepts, such as:
+The motivation behind creating this Calendar project was to practice React and web development concepts, such as:
 - React Components
 - React State Management
 - JSX Syntax
@@ -11,7 +11,7 @@ The motivation behind creating this Calendar application was to practice React a
 - Input Validation
 
 ## Features
-Some features of this Calendar project include:
+Features of this Calendar project include:
 - Calendar UI
 - Today's Date Highlighted
 - Event Creation & Deletion
@@ -33,4 +33,4 @@ Click `Add` to add the event to the calendar. Click `Cancel` to clear the fields
 To delete an existing event, click the `-` button near the top-right corner of the event card in the Events List.
 
 ## Improvements
-One improvement for this project would be using HTML Form Validation features in the Event modal, such as the `required` attribute.
+One improvement for this project would be using HTML Form Validation features in the event modal, such as the `required` attribute.
