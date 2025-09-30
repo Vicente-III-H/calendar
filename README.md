@@ -11,11 +11,12 @@ The motivation behind creating this Calendar application was to practice React a
 - Input Validation
 
 ## Features
-- Calendar display
+Some features of this Calendar project include:
+- Calendar view
 - Today's date highlighted
 - Event creation & deletion
 - Chronological list of events
-- Days display minimalistic list of events
+- Days can display a minimalistic list of events
 
 ## Instructions
 ### Calendar
