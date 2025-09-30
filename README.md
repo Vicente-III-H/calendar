@@ -1,5 +1,5 @@
 # Calendar
-![Calendar project filled with events]()
+![Calendar project filled with events](./readme-assets/calendar-with-events.png)
 
 ## Motivation
 The motivation behind creating this Calendar application was to practice React and web development concepts, such as:
