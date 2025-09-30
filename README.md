@@ -33,4 +33,4 @@ Click `Add` to add the event to the calendar. Click `Cancel` to clear the fields
 To delete an existing event, click the `-` button near the top-right corner of the event card in the Events List.
 
 ## Improvements
-One improvement for this project would be to use HTML Form Validation features to help validate the event modal, such as the `required` attribute.
+One improvement to this project would be to use HTML Form Validation features, such as the `required` attribute, to help validate the event modal.
