@@ -26,7 +26,7 @@ function Day({ day, currentMonth, events, today, isAtEnd }) {
 
     return (
         <div className={"day flexbox-column" + (isAtEnd ? " day-no-border": "")}>
-            <div className={"day-number" + (includedInMonth ? " regular-title" : " not-included") + (isToday ? " today" : "")}>{day.getDate()}</div>
+            <div className={"day-number" + (includedInMonth ? " regular-title" : " not-included") + (isToday && includedInMonth ? " today" : "")}>{day.getDate()}</div>
             <div className="space flex-grow flexbox-column">
                 {events.map((event) =>
                     includedInMonth ?
